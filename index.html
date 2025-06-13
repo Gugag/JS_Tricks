@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100+ JavaScript Tricks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>100+ JavaScript Tricks</h1>
+        <p>Master JavaScript with these practical tricks and techniques</p>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="searchBox" class="search-box" placeholder="Search tricks by keyword...">
+        </div>
+
+        <div class="stats">
+            <h3>JavaScript Mastery Hub</h3>
+            <p>Explore <span id="trickCount">100+</span> handpicked JavaScript tricks to level up your coding skills!</p>
+        </div>
+
+        <div class="category-filter">
+            <button class="filter-btn active" data-category="all">All Tricks</button>
+            <button class="filter-btn" data-category="arrays">Arrays</button>
+            <button class="filter-btn" data-category="objects">Objects</button>
+            <button class="filter-btn" data-category="functions">Functions</button>
+            <button class="filter-btn" data-category="dom">DOM</button>
+            <button class="filter-btn" data-category="utilities">String</button>
+            <button class="filter-btn" data-category="es6">ES6+</button>
+            <button class="filter-btn" data-category="async">Async</button>
+            <button class="filter-btn" data-category="performance">Performance</button>
+            <button class="filter-btn" data-category="date">Date</button>
+            <button class="filter-btn" data-category="utilities">Utilities</button>
+        </div>
+
+        <div class="tricks-grid" id="tricksGrid">
+            <!-- Tricks will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
