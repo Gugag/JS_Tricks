@@ -1623,7 +1623,1895 @@ button.addEventListener('click', () => {
     demo: () => {
       return "Stops event bubbling. Useful for nested elements with individual click handlers.";
     }
+  },
+
+  {
+    id: 111,
+    title: "Convert Object to Map",
+    category: "objects",
+    description: "Convert a plain JavaScript object into a Map object.",
+    code: `const obj = { a: 1, b: 2 };
+const myMap = new Map(Object.entries(obj));`,
+    demo: () => {
+      const obj = { a: 1, b: 2 };
+      const myMap = new Map(Object.entries(obj));
+      return `Map: ${JSON.stringify(Array.from(myMap))}`;
+    }
+  },
+  {
+    id: 112,
+    title: "Convert Map to Object",
+    category: "objects",
+    description: "Convert a Map object back into a plain JavaScript object.",
+    code: `const myMap = new Map([['a', 1], ['b', 2]]);
+const obj = Object.fromEntries(myMap);`,
+    demo: () => {
+      const myMap = new Map([['a', 1], ['b', 2]]);
+      const obj = Object.fromEntries(myMap);
+      return `Object: ${JSON.stringify(obj)}`;
+    }
+  },
+  {
+    id: 113,
+    title: "Check for Mobile OS",
+    category: "utilities",
+    description: "Detect the operating system of a mobile device (iOS/Android).",
+    code: `const userAgent = navigator.userAgent;
+const isAndroid = /Android/i.test(userAgent);
+const isIOS = /iPhone|iPad|iPod/i.test(userAgent);`,
+    demo: () => {
+      const userAgent = navigator.userAgent;
+      const isAndroid = /Android/i.test(userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+      return `Is Android: ${isAndroid}\nIs iOS: ${isIOS}`;
+    }
+  },
+  {
+    id: 114,
+    title: "Remove Whitespace from String",
+    category: "strings",
+    description: "Remove all whitespace characters from a string.",
+    code: `const str = '  Hello   World  ';
+const noWhitespace = str.replace(/\s/g, '');`,
+    demo: () => {
+      const str = '  Hello   World  ';
+      const noWhitespace = str.replace(/\s/g, '');
+      return `Original: "${str}"\nNo Whitespace: "${noWhitespace}"`;
+    }
+  },
+  {
+    id: 115,
+    title: "Check for Empty String",
+    category: "strings",
+    description: "Verify if a string is empty or contains only whitespace.",
+    code: `const str1 = '';
+const str2 = '   ';
+const isEmpty1 = str1.length === 0;
+const isEmpty2 = str2.trim().length === 0;`,
+    demo: () => {
+      const str1 = '';
+      const str2 = '   ';
+      const isEmpty1 = str1.length === 0;
+      const isEmpty2 = str2.trim().length === 0;
+      return `"${str1}" is empty: ${isEmpty1}\n"${str2}" (trimmed) is empty: ${isEmpty2}`;
+    }
+  },
+  {
+    id: 116,
+    title: "Scroll to Element",
+    category: "dom",
+    description: "Scroll the window to bring a specific DOM element into view.",
+    code: `document.getElementById('targetElement').scrollIntoView({ behavior: 'smooth', block: 'center' });`,
+    demo: () => {
+      return "Scrolls to a target element smoothly. (Requires a scrollable page and target element)";
+    }
+  },
+  {
+    id: 117,
+    title: "Create Range of Numbers",
+    category: "arrays",
+    description: "Generate an array containing a range of numbers.",
+    code: `const range = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => start + i);
+const numbers = range(1, 5); // [1, 2, 3, 4, 5]`,
+    demo: () => {
+      const range = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => start + i);
+      const numbers = range(1, 5);
+      return `Range (1-5): [${numbers}]`;
+    }
+  },
+  {
+    id: 118,
+    title: "Remove Element from DOM",
+    category: "dom",
+    description: "Remove a specific element from the document object model.",
+    code: `const element = document.getElementById('elementToRemove');
+element.parentNode.removeChild(element);
+// or: element.remove(); (modern browsers)`,
+    demo: () => {
+      return "Removes a DOM element. (Won't actually remove for demo purposes)";
+    }
+  },
+  {
+    id: 119,
+    title: "Check if Object is Array",
+    category: "utilities",
+    description: "Determine if a given variable is an array.",
+    code: `const arr = [];
+const obj = {};
+const isArray1 = Array.isArray(arr);
+const isArray2 = arr instanceof Array;`,
+    demo: () => {
+      const arr = [];
+      const obj = {};
+      const isArray1 = Array.isArray(arr);
+      const isArray2 = arr instanceof Array;
+      const isArray3 = Array.isArray(obj);
+      return `[] is array (Array.isArray): ${isArray1}\n[] is array (instanceof): ${isArray2}\n{} is array: ${isArray3}`;
+    }
+  },
+  {
+    id: 120,
+    title: "Get Unique Values from Array of Objects",
+    category: "arrays",
+    description: "Extract unique values of a specific property from an array of objects.",
+    code: `const users = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }, { id: 1, name: 'A' }];
+const uniqueNames = [...new Set(users.map(user => user.name))];`,
+    demo: () => {
+      const users = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Alice' }];
+      const uniqueNames = [...new Set(users.map(user => user.name))];
+      return `Users: ${JSON.stringify(users)}\nUnique Names: [${uniqueNames.map(n => `'${n}'`).join(', ')}]`;
+    }
+  },
+  {
+    id: 121,
+    title: "URL Encode String",
+    category: "strings",
+    description: "Encode a string for use in a URL.",
+    code: `const uri = 'my file.txt';
+const encodedUri = encodeURIComponent(uri);`,
+    demo: () => {
+      const uri = 'my file with spaces & symbols.txt';
+      const encodedUri = encodeURIComponent(uri);
+      return `Original: "${uri}"\nEncoded: "${encodedUri}"`;
+    }
+  },
+  {
+    id: 122,
+    title: "URL Decode String",
+    category: "strings",
+    description: "Decode a URL-encoded string.",
+    code: `const encodedUri = 'my%20file.txt';
+const decodedUri = decodeURIComponent(encodedUri);`,
+    demo: () => {
+      const encodedUri = 'my%20file%20with%20spaces%20%26%20symbols.txt';
+      const decodedUri = decodeURIComponent(encodedUri);
+      return `Encoded: "${encodedUri}"\nDecoded: "${decodedUri}"`;
+    }
+  },
+  {
+    id: 123,
+    title: "Check for Leap Year",
+    category: "date",
+    description: "Determine if a given year is a leap year.",
+    code: `function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+const is2024Leap = isLeapYear(2024);`,
+    demo: () => {
+      function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+      }
+      return `2024 is leap year: ${isLeapYear(2024)}\n2023 is leap year: ${isLeapYear(2023)}\n2000 is leap year: ${isLeapYear(2000)}`;
+    }
+  },
+  {
+    id: 124,
+    title: "String Includes Check",
+    category: "strings",
+    description: "Check if a string contains another substring.",
+    code: `const sentence = 'Hello world, welcome to the universe.';
+const hasWord = sentence.includes('world');`,
+    demo: () => {
+      const sentence = 'Hello world, welcome to the universe.';
+      const hasWord = sentence.includes('world');
+      const hasOtherWord = sentence.includes('moon');
+      return `"${sentence}" includes "world": ${hasWord}\n"${sentence}" includes "moon": ${hasOtherWord}`;
+    }
+  },
+  {
+    id: 125,
+    title: "Convert to PascalCase",
+    category: "strings",
+    description: "Convert a string to PascalCase (e.g., 'hello world' -> 'HelloWorld').",
+    code: `const toPascalCase = (str) =>
+  str
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => word.toUpperCase())
+    .replace(/\s+/g, '');
+const pascalString = toPascalCase('hello world example');`,
+    demo: () => {
+      const toPascalCase = (str) =>
+        str
+          .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => word.toUpperCase())
+          .replace(/\s+/g, '');
+      const pascalString = toPascalCase('hello world example string');
+      return `Original: "hello world example string"\nPascalCase: "${pascalString}"`;
+    }
+  },
+  {
+    id: 126,
+    title: "Convert to Kebab-Case",
+    category: "strings",
+    description: "Convert a string to kebab-case (e.g., 'Hello World' -> 'hello-world').",
+    code: `const toKebabCase = (str) =>
+  str
+    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2')
+    .toLowerCase()
+    .replace(/\s+/g, '-');
+const kebabString = toKebabCase('Hello World Example');`,
+    demo: () => {
+      const toKebabCase = (str) =>
+        str
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2')
+          .toLowerCase()
+          .replace(/\s+/g, '-');
+      const kebabString = toKebabCase('Hello World Example String');
+      return `Original: "Hello World Example String"\nKebab-Case: "${kebabString}"`;
+    }
+  },
+  {
+    id: 127,
+    title: "Convert to Snake_Case",
+    category: "strings",
+    description: "Convert a string to snake_case (e.g., 'Hello World' -> 'hello_world').",
+    code: `const toSnakeCase = (str) =>
+  str
+    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1_$2')
+    .toLowerCase()
+    .replace(/\s+/g, '_');
+const snakeString = toSnakeCase('Hello World Example');`,
+    demo: () => {
+      const toSnakeCase = (str) =>
+        str
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1_$2')
+          .toLowerCase()
+          .replace(/\s+/g, '_');
+      const snakeString = toSnakeCase('Hello World Example String');
+      return `Original: "Hello World Example String"\nSnake_Case: "${snakeString}"`;
+    }
+  },
+  {
+    id: 128,
+    title: "Check if Value is Number",
+    category: "utilities",
+    description: "Reliably check if a value is a number.",
+    code: `const num = 123;
+const str = 'abc';
+const isNum1 = typeof num === 'number' && !isNaN(num);
+const isNum2 = !isNaN(parseFloat(str)) && isFinite(str);`,
+    demo: () => {
+      const num = 123;
+      const str = 'abc';
+      const isNum1 = typeof num === 'number' && !isNaN(num);
+      const isNum2 = !isNaN(parseFloat(str)) && isFinite(str);
+      const isNum3 = !isNaN(parseFloat('123'));
+      return `123 is number: ${isNum1}\n"abc" is number: ${isNum2}\n"123" is number: ${isNum3}`;
+    }
+  },
+  {
+    id: 129,
+    title: "Set HTML Element Content",
+    category: "dom",
+    description: "Set the inner HTML or text content of a DOM element.",
+    code: `document.getElementById('myDiv').innerHTML = '<b>Hello</b> World';
+document.getElementById('mySpan').textContent = 'Plain Text';`,
+    demo: () => {
+      return "Sets innerHTML or textContent of an element. (No visible change in demo)";
+    }
+  },
+  {
+    id: 130,
+    title: "Get Element by ID Shorthand",
+    category: "dom",
+    description: "A common shorthand for `document.getElementById` for quicker access.",
+    code: `const $ = (id) => document.getElementById(id);
+const myElement = $('myDiv');`,
+    demo: () => {
+      const $ = (id) => document.getElementById(id);
+      return "Shorthand for document.getElementById.";
+    }
+  },
+  {
+    id: 131,
+    title: "Clear All Timers",
+    category: "performance",
+    description: "Clear all active `setTimeout` and `setInterval` timers.",
+    code: `// This is a conceptual trick. In practice, you'd track timer IDs.
+// For example:
+// let timerIds = [];
+// timerIds.push(setTimeout(...));
+// timerIds.forEach(id => clearTimeout(id));
+// This is not a direct browser API but a common pattern.`,
+    demo: () => {
+      return "Conceptual: In real apps, track and clear timer IDs to prevent leaks.";
+    }
+  },
+  {
+    id: 132,
+    title: "Remove Accents from String",
+    category: "strings",
+    description: "Remove diacritics (accents) from a string.",
+    code: `const normalizeString = (str) =>
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const text = 'résumé café';
+const normalizedText = normalizeString(text);`,
+    demo: () => {
+      const normalizeString = (str) =>
+        str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const text = 'résumé café éléphant';
+      const normalizedText = normalizeString(text);
+      return `Original: "${text}"\nNormalized: "${normalizedText}"`;
+    }
+  },
+  {
+    id: 133,
+    title: "Check for Property in Object and Access",
+    category: "objects",
+    description: "Check if a property exists before accessing it, using optional chaining or logical AND.",
+    code: `const user = { details: { name: 'Alice' } };
+const userName1 = user?.details?.name; // Optional chaining
+const userName2 = user.details && user.details.name; // Logical AND`,
+    demo: () => {
+      const user = { details: { name: 'Alice' } };
+      const userName1 = user?.details?.name;
+      const userName2 = user.details && user.details.name;
+      const missingUser = {};
+      const missingName = missingUser?.details?.name;
+      return `User Name 1: ${userName1}\nUser Name 2: ${userName2}\nMissing Name: ${missingName}`;
+    }
+  },
+  {
+    id: 134,
+    title: "Get Last Element of Array",
+    category: "arrays",
+    description: "Access the last element of an array.",
+    code: `const arr = [1, 2, 3, 4];
+const lastElement = arr[arr.length - 1];`,
+    demo: () => {
+      const arr = [1, 2, 3, 4];
+      const lastElement = arr[arr.length - 1];
+      return `Array: [${arr}]\nLast element: ${lastElement}`;
+    }
+  },
+  {
+    id: 135,
+    title: "Remove First Element of Array",
+    category: "arrays",
+    description: "Remove the first element from an array efficiently.",
+    code: `const arr = [1, 2, 3, 4];
+const removed = arr.shift(); // Modifies original array
+// If you want a new array:
+// const newArr = arr.slice(1);`,
+    demo: () => {
+      const arr = [1, 2, 3, 4];
+      const arrShift = [...arr];
+      const removedShift = arrShift.shift();
+      const newArrSlice = arr.slice(1);
+      return `Original: [${arr}]\nshift() result: ${removedShift}, array: [${arrShift}]\nsplice(1) new array: [${newArrSlice}]`;
+    }
+  },
+  {
+    id: 136,
+    title: "Format Phone Number",
+    category: "strings",
+    description: "Simple formatting of a 10-digit number into a phone number string.",
+    code: `const formatPhoneNumber = (digits) => {
+  const cleaned = ('' + digits).replace(/\D/g, '');
+  const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  return match ? \`(\${match[1]}) \${match[2]}-\${match[3]}\` : null;
+};
+const formatted = formatPhoneNumber(1234567890);`,
+    demo: () => {
+      const formatPhoneNumber = (digits) => {
+        const cleaned = ('' + digits).replace(/\D/g, '');
+        const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+        return match ? `(${match[1]}) ${match[2]}-${match[3]}` : null;
+      };
+      const formatted = formatPhoneNumber(1234567890);
+      const invalid = formatPhoneNumber('123');
+      return `1234567890 → ${formatted}\n"123" → ${invalid}`;
+    }
+  },
+  {
+    id: 137,
+    title: "Check if Element is Visible",
+    category: "dom",
+    description: "Check if a DOM element is currently visible in the viewport.",
+    code: `function isElementVisible(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+// Usage: const visible = isElementVisible(document.getElementById('myElement'));`,
+    demo: () => {
+      return "Determines if an element is visible in the viewport. (Requires a target element to test)";
+    }
+  },
+  {
+    id: 138,
+    title: "Replace All Occurrences",
+    category: "strings",
+    description: "Replace all occurrences of a substring in a string.",
+    code: `const text = 'apple, banana, apple, orange';
+const newText = text.replace(/apple/g, 'grape'); // Using regex global flag
+// Or: const newText = text.replaceAll('apple', 'grape'); (ES2021)`,
+    demo: () => {
+      const text = 'apple, banana, apple, orange';
+      const newText = text.replace(/apple/g, 'grape');
+      const text2 = 'test test test';
+      const newText2 = text2.replaceAll('test', 'done');
+      return `Original: "${text}"\nReplaced (regex): "${newText}"\nReplaced (replaceAll): "${newText2}"`;
+    }
+  },
+  {
+    id: 139,
+    title: "Empty an Array",
+    category: "arrays",
+    description: "Different ways to empty an array.",
+    code: `let arr1 = [1, 2, 3];
+arr1.length = 0; // Method 1
+
+let arr2 = [1, 2, 3];
+arr2.splice(0, arr2.length); // Method 2
+
+let arr3 = [1, 2, 3];
+arr3 = []; // Method 3 (creates new array, not good for const or references)`,
+    demo: () => {
+      let arr1 = [1, 2, 3];
+      arr1.length = 0;
+      let arr2 = [4, 5, 6];
+      arr2.splice(0, arr2.length);
+      let arr3 = [7, 8, 9];
+      arr3 = [];
+      return `Method 1 (length = 0): [${arr1}]\nMethod 2 (splice): [${arr2}]\nMethod 3 (reassign): [${arr3}]`;
+    }
+  },
+  {
+    id: 140,
+    title: "Delay with setTimeout",
+    category: "async",
+    description: "Execute a function after a specified delay.",
+    code: `console.log('Start');
+setTimeout(() => {
+  console.log('Delayed message');
+}, 1000); // 1 second delay`,
+    demo: () => {
+      return "Check your browser console for 'Start' immediately, then 'Delayed message' after 1 second.";
+    }
+  },
+  {
+    id: 141,
+    title: "Array to Object Transformation",
+    category: "arrays",
+    description: "Convert an array of key-value pairs or objects into a single object.",
+    code: `const arr = [['a', 1], ['b', 2]];
+const obj = Object.fromEntries(arr); // { a: 1, b: 2 }
+
+const users = [{ id: 'a', name: 'Alice' }, { id: 'b', name: 'Bob' }];
+const userObj = users.reduce((acc, user) => ({ ...acc, [user.id]: user.name }), {}); // { a: 'Alice', b: 'Bob' }`,
+    demo: () => {
+      const arr = [['a', 1], ['b', 2]];
+      const obj = Object.fromEntries(arr);
+      const users = [{ id: 'a', name: 'Alice' }, { id: 'b', name: 'Bob' }];
+      const userObj = users.reduce((acc, user) => ({ ...acc, [user.id]: user.name }), {});
+      return `From array of pairs: ${JSON.stringify(obj)}\nFrom array of objects: ${JSON.stringify(userObj)}`;
+    }
+  },
+  {
+    id: 142,
+    title: "Filter Object by Keys",
+    category: "objects",
+    description: "Create a new object containing only specified keys from an existing object.",
+    code: `const original = { a: 1, b: 2, c: 3 };
+const allowedKeys = ['a', 'c'];
+const filtered = Object.keys(original)
+  .filter(key => allowedKeys.includes(key))
+  .reduce((obj, key) => {
+    obj[key] = original[key];
+    return obj;
+  }, {});`,
+    demo: () => {
+      const original = { a: 1, b: 2, c: 3 };
+      const allowedKeys = ['a', 'c'];
+      const filtered = Object.keys(original)
+        .filter(key => allowedKeys.includes(key))
+        .reduce((obj, key) => {
+          obj[key] = original[key];
+          return obj;
+        }, {});
+      return `Original: ${JSON.stringify(original)}\nFiltered (keys 'a', 'c'): ${JSON.stringify(filtered)}`;
+    }
+  },
+  {
+    id: 143,
+    title: "Execute Function on DOM Ready",
+    category: "dom",
+    description: "Run a function once the DOM is fully loaded and parsed.",
+    code: `document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM fully loaded and parsed');
+  // Your code here
+});`,
+    demo: () => {
+      return "This code runs once the DOM is loaded. Check browser console.";
+    }
+  },
+  {
+    id: 144,
+    title: "Check if Argument is Defined",
+    category: "functions",
+    description: "Verify if a function argument has been provided (is not undefined).",
+    code: `function checkArg(arg) {
+  if (typeof arg !== 'undefined') {
+    console.log('Argument is defined:', arg);
+  } else {
+    console.log('Argument is undefined.');
   }
+}
+checkArg('hello');
+checkArg();`,
+    demo: () => {
+      let output = '';
+      function checkArg(arg) {
+        if (typeof arg !== 'undefined') {
+          output += `Argument is defined: ${arg}\n`;
+        } else {
+          output += `Argument is undefined.\n`;
+        }
+      }
+      checkArg('hello');
+      checkArg();
+      return output.trim();
+    }
+  },
+  {
+    id: 145,
+    title: "String Interpolation with Variables",
+    category: "strings",
+    description: "Easily embed variables or expressions within strings using template literals.",
+    code: `const name = 'Alice';
+const age = 30;
+const greeting = \`Hello, my name is \${name} and I am \${age} years old.\`;`,
+    demo: () => {
+      const name = 'Alice';
+      const age = 30;
+      const greeting = `Hello, my name is ${name} and I am ${age} years old.`;
+      return greeting;
+    }
+  },
+  {
+    id: 146,
+    title: "Dynamic Object Key Access",
+    category: "objects",
+    description: "Access object properties using a variable for the key name.",
+    code: `const obj = { name: 'John', age: 30 };
+const propName = 'name';
+const value = obj[propName]; // John`,
+    demo: () => {
+      const obj = { name: 'John', age: 30 };
+      const propName = 'name';
+      const value = obj[propName];
+      const dynamicProp = 'age';
+      const ageValue = obj[dynamicProp];
+      return `Accessed by variable '${propName}': ${value}\nAccessed by variable '${dynamicProp}': ${ageValue}`;
+    }
+  },
+  {
+    id: 147,
+    title: "Array Fill with Value",
+    category: "arrays",
+    description: "Fill an array with a static value.",
+    code: `const arr = new Array(5).fill(0); // [0, 0, 0, 0, 0]
+const filledSection = [1, 2, 3, 4, 5].fill('x', 2, 4); // [1, 2, 'x', 'x', 5]`,
+    demo: () => {
+      const arr = new Array(5).fill(0);
+      const filledSection = [1, 2, 3, 4, 5].fill('x', 2, 4);
+      return `Filled with 0s: [${arr}]\nFilled section: [${filledSection}]`;
+    }
+  },
+  {
+    id: 148,
+    title: "Generate Random Hex Color",
+    category: "utilities",
+    description: "Generate a random hexadecimal color code.",
+    code: `const randomHexColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');`,
+    demo: () => {
+      const randomHexColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      return `Random Hex Color: ${randomHexColor}`;
+    }
+  },
+  {
+    id: 149,
+    title: "Convert String to Array of Characters",
+    category: "strings",
+    description: "Break a string down into an array of its individual characters.",
+    code: `const str = 'hello';
+const charArray1 = str.split(''); // ['h', 'e', 'l', 'l', 'o']
+const charArray2 = [...str]; // ['h', 'e', 'l', 'l', 'o']`,
+    demo: () => {
+      const str = 'hello';
+      const charArray1 = str.split('');
+      const charArray2 = [...str];
+      return `Using split(''): [${charArray1.map(c => `'${c}'`).join(', ')}]\nUsing spread operator: [${charArray2.map(c => `'${c}'`).join(', ')}]`;
+    }
+  },
+  {
+    id: 150,
+    title: "Check for Weekend Date",
+    category: "date",
+    description: "Determine if a given date falls on a Saturday or Sunday.",
+    code: `function isWeekend(date) {
+  const day = date.getDay(); // Sunday - 0, Saturday - 6
+  return day === 0 || day === 6;
+}
+const today = new Date();
+const isTodayWeekend = isWeekend(today);`,
+    demo: () => {
+      function isWeekend(date) {
+        const day = date.getDay();
+        return day === 0 || day === 6;
+      }
+      const today = new Date();
+      const isTodayWeekend = isWeekend(today);
+      const saturday = new Date('2025-06-14'); // Assuming this is a Saturday
+      const isSaturdayWeekend = isWeekend(saturday);
+      return `Today (${today.toDateString()}) is weekend: ${isTodayWeekend}\n'2025-06-14' is weekend: ${isSaturdayWeekend}`;
+    }
+  },
+  {
+    id: 151,
+    title: "Find Object in Array by Property",
+    category: "arrays",
+    description: "Find the first object in an array that matches a specific property value.",
+    code: `const users = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }];
+const user = users.find(u => u.id === 2);`,
+    demo: () => {
+      const users = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }];
+      const user = users.find(u => u.id === 2);
+      const notFound = users.find(u => u.id === 99);
+      return `Found user with ID 2: ${JSON.stringify(user)}\nUser with ID 99: ${JSON.stringify(notFound)}`;
+    }
+  },
+  {
+    id: 152,
+    title: "Get Element's Data Attributes",
+    category: "dom",
+    description: "Access custom data attributes from a DOM element.",
+    code: `<div id="myElement" data-id="123" data-name="test"></div>
+const element = document.getElementById('myElement');
+const dataId = element.dataset.id; // "123"
+const dataName = element.dataset.name; // "test"`,
+    demo: () => {
+      const tempDiv = document.createElement('div');
+      tempDiv.setAttribute('data-id', '123');
+      tempDiv.setAttribute('data-name', 'test data');
+      const dataId = tempDiv.dataset.id;
+      const dataName = tempDiv.dataset.name;
+      return `data-id: ${dataId}\ndata-name: ${dataName}`;
+    }
+  },
+  {
+    id: 153,
+    title: "Shorten Number with Suffix",
+    category: "utilities",
+    description: "Convert large numbers into human-readable format (e.g., 1200 to 1.2K).",
+    code: `function shortenNumber(num) {
+  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+  return num;
+}
+const shortened = shortenNumber(1234567);`,
+    demo: () => {
+      function shortenNumber(num) {
+        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+        return num;
+      }
+      return `1234567 → ${shortenNumber(1234567)}\n9876 → ${shortenNumber(9876)}\n500 → ${shortenNumber(500)}`;
+    }
+  },
+  {
+    id: 154,
+    title: "Create Array with Unique Values",
+    category: "arrays",
+    description: "Another method to create an array with only unique values.",
+    code: `const arr = [1, 2, 2, 3, 4, 4, 5];
+const unique = [...new Set(arr)];`,
+    demo: () => {
+      const arr = [1, 2, 2, 3, 4, 4, 5];
+      const unique = [...new Set(arr)];
+      return `Original: [${arr}]\nUnique: [${unique}]`;
+    }
+  },
+  {
+    id: 155,
+    title: "Simple Cache with Map",
+    category: "performance",
+    description: "Implement a basic caching mechanism using a Map for function results.",
+    code: `const cache = new Map();
+function calculateExpensive(arg) {
+  if (cache.has(arg)) {
+    console.log('Fetching from cache...');
+    return cache.get(arg);
+  }
+  console.log('Calculating...');
+  const result = arg * 2; // Simulate expensive calculation
+  cache.set(arg, result);
+  return result;
+}
+calculateExpensive(5);
+calculateExpensive(5);`,
+    demo: () => {
+      const cache = new Map();
+      let output = '';
+      function calculateExpensive(arg) {
+        if (cache.has(arg)) {
+          output += 'Fetching from cache...\n';
+          return cache.get(arg);
+        }
+        output += 'Calculating...\n';
+        const result = arg * 2;
+        cache.set(arg, result);
+        return result;
+      }
+      calculateExpensive(5);
+      calculateExpensive(5);
+      return output.trim();
+    }
+  },
+  {
+    id: 156,
+    title: "Create Read-Only Object",
+    category: "objects",
+    description: "Make an object immutable using Object.freeze().",
+    code: `const obj = { a: 1, b: { c: 2 } };
+Object.freeze(obj);
+// obj.a = 5; // This will fail silently in non-strict mode, or throw error in strict mode
+// obj.b.c = 3; // Note: nested objects are NOT deeply frozen by default`,
+    demo: () => {
+      const obj = { a: 1, b: { c: 2 } };
+      Object.freeze(obj);
+      try {
+        obj.a = 5; // Attempt to modify
+      } catch (e) {
+        // Handle in strict mode
+      }
+      obj.b.c = 3; // This will succeed as it's not deeply frozen
+      return `Original: ${JSON.stringify(obj)}\nAfter attempted modification (a is frozen, b.c is not): ${JSON.stringify(obj)}`;
+    }
+  },
+  {
+    id: 157,
+    title: "Iterate Over Set",
+    category: "es6",
+    description: "Loop through elements of a Set using for...of or forEach.",
+    code: `const mySet = new Set([1, 2, 3]);
+for (const item of mySet) {
+  console.log(item);
+}
+mySet.forEach(item => console.log(item));`,
+    demo: () => {
+      const mySet = new Set([1, 2, 3, 2, 4]);
+      let output = 'For...of:\n';
+      for (const item of mySet) {
+        output += `${item}\n`;
+      }
+      output += 'forEach:\n';
+      mySet.forEach(item => output += `${item}\n`);
+      return output.trim();
+    }
+  },
+  {
+    id: 158,
+    title: "Check if all elements are truthy",
+    category: "arrays",
+    description: "Verify if every element in an array is truthy.",
+    code: `const arr1 = [1, true, 'hello'];
+const allTruthy1 = arr1.every(Boolean); // true
+const arr2 = [1, false, 'hello'];
+const allTruthy2 = arr2.every(Boolean); // false`,
+    demo: () => {
+      const arr1 = [1, true, 'hello'];
+      const allTruthy1 = arr1.every(Boolean);
+      const arr2 = [1, false, 'hello'];
+      const allTruthy2 = arr2.every(Boolean);
+      return `[1, true, 'hello'] all truthy: ${allTruthy1}\n[1, false, 'hello'] all truthy: ${allTruthy2}`;
+    }
+  },
+  {
+    id: 159,
+    title: "Concatenate Arrays without Modifying Originals",
+    category: "arrays",
+    description: "Combine two or more arrays into a new array without altering the original arrays.",
+    code: `const arr1 = [1, 2];
+const arr2 = [3, 4];
+const combined = arr1.concat(arr2); // [1, 2, 3, 4]
+const combinedSpread = [...arr1, ...arr2]; // [1, 2, 3, 4]`,
+    demo: () => {
+      const arr1 = [1, 2];
+      const arr2 = [3, 4];
+      const combined = arr1.concat(arr2);
+      const combinedSpread = [...arr1, ...arr2];
+      return `Original arr1: [${arr1}]\nOriginal arr2: [${arr2}]\nUsing concat: [${combined}]\nUsing spread: [${combinedSpread}]`;
+    }
+  },
+  {
+    id: 160,
+    title: "Get Current Timestamp",
+    category: "date",
+    description: "Get the current time in milliseconds since the Unix epoch.",
+    code: `const timestamp1 = Date.now();
+const timestamp2 = new Date().getTime();
+const timestamp3 = +new Date(); // Unary plus operator`,
+    demo: () => {
+      const timestamp1 = Date.now();
+      const timestamp2 = new Date().getTime();
+      const timestamp3 = +new Date();
+      return `Date.now(): ${timestamp1}\ngetTime(): ${timestamp2}\nUnary plus: ${timestamp3}`;
+    }
+  },
+
+  {
+    id: 161,
+    title: "Validate Email Address (Basic)",
+    category: "regex",
+    description: "Use a regular expression to perform a basic validation of an email format.",
+    code: `const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const isValid = emailRegex.test('test@example.com');`,
+    demo: () => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const email1 = 'test@example.com';
+      const email2 = 'invalid-email';
+      return `"${email1}" is valid: ${emailRegex.test(email1)}\n"${email2}" is valid: ${emailRegex.test(email2)}`;
+    }
+  },
+  {
+    id: 162,
+    title: "Extract Numbers from String",
+    category: "regex",
+    description: "Extract all numerical digits from a string.",
+    code: `const text = 'I have 12 apples and 34 oranges.';
+const numbers = text.match(/\d+/g); // ["12", "34"]`,
+    demo: () => {
+      const text = 'I have 12 apples and 34 oranges.';
+      const numbers = text.match(/\d+/g);
+      return `Original: "${text}"\nNumbers: [${numbers ? numbers.join(', ') : 'None'}]`;
+    }
+  },
+  {
+    id: 163,
+    title: "Remove Non-Alphabetic Characters",
+    category: "regex",
+    description: "Remove any character from a string that is not an alphabet letter.",
+    code: `const text = 'Hello123World!@#';
+const cleanedText = text.replace(/[^a-zA-Z]/g, ''); // "HelloWorld"`,
+    demo: () => {
+      const text = 'Hello123World!@#';
+      const cleanedText = text.replace(/[^a-zA-Z]/g, '');
+      return `Original: "${text}"\nCleaned: "${cleanedText}"`;
+    }
+  },
+  {
+    id: 164,
+    title: "Check for Alphanumeric String",
+    category: "regex",
+    description: "Determine if a string contains only alphanumeric characters (letters and numbers).",
+    code: `const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+const isAlphanumeric1 = alphanumericRegex.test('HelloWorld123'); // true
+const isAlphanumeric2 = alphanumericRegex.test('Hello World!'); // false`,
+    demo: () => {
+      const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+      const str1 = 'HelloWorld123';
+      const str2 = 'Hello World!';
+      return `"${str1}" is alphanumeric: ${alphanumericRegex.test(str1)}\n"${str2}" is alphanumeric: ${alphanumericRegex.test(str2)}`;
+    }
+  },
+  {
+    id: 165,
+    title: "Find First Match",
+    category: "regex",
+    description: "Find the first occurrence of a pattern in a string.",
+    code: `const text = 'The quick brown fox jumps over the lazy dog.';
+const firstWordStartingWithT = text.match(/\\bT\\w+/); // ["The"]`,
+    demo: () => {
+      const text = 'The quick brown fox jumps over the lazy dog.';
+      const firstWordStartingWithT = text.match(/\bT\w+/);
+      return `Original: "${text}"\nFirst word starting with 'T': ${firstWordStartingWithT ? firstWordStartingWithT[0] : 'None'}`;
+    }
+  },
+  {
+    id: 166,
+    title: "Replace Multiple Spaces with Single",
+    category: "regex",
+    description: "Normalize whitespace by replacing multiple spaces with a single space.",
+    code: `const text = '  Hello   World   Example  ';
+const normalized = text.replace(/\s\s+/g, ' ').trim(); // "Hello World Example"`,
+    demo: () => {
+      const text = '  Hello   World   Example  ';
+      const normalized = text.replace(/\s\s+/g, ' ').trim();
+      return `Original: "${text}"\nNormalized: "${normalized}"`;
+    }
+  },
+  {
+    id: 167,
+    title: "Validate IPv4 Address (Basic)",
+    category: "regex",
+    description: "A simple regex to check for valid IPv4 address format.",
+    code: `const ipv4Regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+const isValid1 = ipv4Regex.test('192.168.1.1'); // true
+const isValid2 = ipv4Regex.test('256.0.0.1'); // false (values > 255 not checked by regex alone)`,
+    demo: () => {
+      const ipv4Regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+      const ip1 = '192.168.1.1';
+      const ip2 = '256.0.0.1'; // Regex says true, but semantically false
+      const ip3 = '1.2.3'; // Regex says false
+      return `"${ip1}" valid: ${ipv4Regex.test(ip1)}\n"${ip2}" valid: ${ipv4Regex.test(ip2)} (regex limitation)\n"${ip3}" valid: ${ipv4Regex.test(ip3)}`;
+    }
+  },
+  {
+    id: 168,
+    title: "Remove HTML Tags",
+    category: "regex",
+    description: "Strip HTML tags from a string, leaving only plain text.",
+    code: `const html = '<p>Hello <b>world</b>!</p>';
+const plainText = html.replace(/<[^>]*>/g, ''); // "Hello world!"`,
+    demo: () => {
+      const html = '<p>Hello <b>world</b>! This is a <a href="#">link</a>.</p>';
+      const plainText = html.replace(/<[^>]*>/g, '');
+      return `Original: "${html}"\nPlain text: "${plainText}"`;
+    }
+  },
+  {
+    id: 169,
+    title: "Match Specific Word (Whole Word)",
+    category: "regex",
+    description: "Match a word only if it appears as a whole word, not part of another word.",
+    code: `const text = 'The quick brown fox. A foxy trick.';
+const foxRegex = /\\bfox\\b/g;
+const matches = text.match(foxRegex); // ["fox"]`,
+    demo: () => {
+      const text = 'The quick brown fox. A foxy trick.';
+      const foxRegex = /\bfox\b/g;
+      const matches = text.match(foxRegex);
+      return `Text: "${text}"\nMatches of whole word 'fox': [${matches ? matches.join(', ') : 'None'}]`;
+    }
+  },
+  {
+    id: 170,
+    title: "Extract Hashtags",
+    category: "regex",
+    description: "Find all hashtags (words starting with #) in a string.",
+    code: `const tweet = 'Loving #JavaScript and #Regex tricks! #WebDev';
+const hashtags = tweet.match(/#\\w+/g); // ["#JavaScript", "#Regex", "#WebDev"]`,
+    demo: () => {
+      const tweet = 'Loving #JavaScript and #Regex tricks! #WebDev This is just #fun.';
+      const hashtags = tweet.match(/#\w+/g);
+      return `Tweet: "${tweet}"\nHashtags: [${hashtags ? hashtags.join(', ') : 'None'}]`;
+    }
+  },
+  // Adding more tricks for existing categories to expand the list
+  {
+    id: 171,
+    title: "Add Element to Array at Specific Index",
+    category: "arrays",
+    description: "Insert an element into an array at a given index using splice().",
+    code: `const arr = [1, 2, 4];
+arr.splice(2, 0, 3); // Inserts 3 at index 2, removing 0 elements
+// arr is now [1, 2, 3, 4]`,
+    demo: () => {
+      const arr = [1, 2, 4];
+      arr.splice(2, 0, 3);
+      return `Original: [1, 2, 4]\nAfter splice(2, 0, 3): [${arr}]`;
+    }
+  },
+  {
+    id: 172,
+    title: "Deep Merge Objects",
+    category: "objects",
+    description: "Merge two objects deeply, handling nested objects.",
+    code: `function deepMerge(target, source) {
+  for (const key in source) {
+    if (source.hasOwnProperty(key)) {
+      if (typeof source[key] === 'object' && source[key] !== null && !Array.isArray(source[key]) && typeof target[key] === 'object' && target[key] !== null && !Array.isArray(target[key])) {
+        target[key] = deepMerge(target[key] || {}, source[key]);
+      } else {
+        target[key] = source[key];
+      }
+    }
+  }
+  return target;
+}
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { b: { d: 3 }, e: 4 };
+const merged = deepMerge(obj1, obj2);`,
+    demo: () => {
+      function deepMerge(target, source) {
+        const output = { ...target };
+        if (target && typeof target === 'object' && source && typeof source === 'object') {
+          Object.keys(source).forEach(key => {
+            if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+              if (!(key in target))
+                Object.assign(output, { [key]: source[key] });
+              else
+                output[key] = deepMerge(target[key], source[key]);
+            } else {
+              Object.assign(output, { [key]: source[key] });
+            }
+          });
+        }
+        return output;
+      }
+      const obj1 = { a: 1, b: { c: 2, f: 5 } };
+      const obj2 = { b: { d: 3, f: 6 }, e: 4 };
+      const merged = deepMerge(obj1, obj2);
+      return `Obj1: ${JSON.stringify(obj1)}\nObj2: ${JSON.stringify(obj2)}\nDeep Merged: ${JSON.stringify(merged)}`;
+    }
+  },
+  {
+    id: 173,
+    title: "Convert Set to Array",
+    category: "es6",
+    description: "Convert a Set data structure into an array.",
+    code: `const mySet = new Set([1, 2, 3]);
+const arr = [...mySet]; // [1, 2, 3]
+// Or: const arr = Array.from(mySet);`,
+    demo: () => {
+      const mySet = new Set([1, 2, 3, 2, 4]);
+      const arr = [...mySet];
+      return `Set: [${[...mySet]}]\nArray from Set: [${arr}]`;
+    }
+  },
+  {
+    id: 174,
+    title: "Check if all properties are truthy",
+    category: "objects",
+    description: "Verify if all enumerable properties of an object have truthy values.",
+    code: `const obj1 = { a: 1, b: 'hello', c: true };
+const allTruthy1 = Object.values(obj1).every(Boolean); // true
+const obj2 = { a: 1, b: '', c: true };
+const allTruthy2 = Object.values(obj2).every(Boolean); // false`,
+    demo: () => {
+      const obj1 = { a: 1, b: 'hello', c: true };
+      const allTruthy1 = Object.values(obj1).every(Boolean);
+      const obj2 = { a: 1, b: '', c: true };
+      const allTruthy2 = Object.values(obj2).every(Boolean);
+      return `Obj1 {a:1, b:'hello', c:true} all truthy: ${allTruthy1}\nObj2 {a:1, b:'', c:true} all truthy: ${allTruthy2}`;
+    }
+  },
+  {
+    id: 175,
+    title: "Parse CSV String to Array of Arrays",
+    category: "strings",
+    description: "Convert a simple CSV string into a 2D array.",
+    code: `function parseCSV(csvString) {
+  const lines = csvString.trim().split('\\n');
+  return lines.map(line => line.split(','));
+}
+const csvData = "header1,header2\\nvalue1a,value1b\\nvalue2a,value2b";
+const parsed = parseCSV(csvData);`,
+    demo: () => {
+      function parseCSV(csvString) {
+        const lines = csvString.trim().split('\n');
+        return lines.map(line => line.split(','));
+      }
+      const csvData = "Name,Age,City\\nAlice,30,NY\\nBob,24,LA";
+      const parsed = parseCSV(csvData);
+      return `CSV Data:\n"${csvData}"\nParsed Array: ${JSON.stringify(parsed)}`;
+    }
+  },
+  {
+    id: 176,
+    title: "Get Week Number of Year",
+    category: "date",
+    description: "Calculate the ISO week number for a given date.",
+    code: `Date.prototype.getWeek = function() {
+  const date = new Date(this.getTime());
+  date.setHours(0, 0, 0, 0);
+  // Thursday in current week decides the year.
+  date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+  // January 4 is always in week 1.
+  const week1 = new Date(date.getFullYear(), 0, 4);
+  // Adjust to Sunday in week 1 and count number of weeks from date.
+  return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+};
+const weekNum = new Date().getWeek();`,
+    demo: () => {
+      Date.prototype.getWeek = function() {
+        const date = new Date(this.getTime());
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+        const week1 = new Date(date.getFullYear(), 0, 4);
+        return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+      };
+      const today = new Date();
+      const weekNum = today.getWeek();
+      return `Current date: ${today.toDateString()}\nWeek number: ${weekNum}`;
+    }
+  },
+  {
+    id: 177,
+    title: "Check if Date is Today",
+    category: "date",
+    description: "Compare a date to the current date to see if it's today.",
+    code: `function isToday(date) {
+  const today = new Date();
+  return date.getDate() === today.getDate() &&
+         date.getMonth() === today.getMonth() &&
+         date.getFullYear() === today.getFullYear();
+}
+const someDate = new Date(); // This will be true
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+const isSomeDateToday = isToday(someDate);`,
+    demo: () => {
+      function isToday(date) {
+        const today = new Date();
+        return date.getDate() === today.getDate() &&
+               date.getMonth() === today.getMonth() &&
+               date.getFullYear() === today.getFullYear();
+      }
+      const someDate = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      return `Is today: ${isToday(someDate)}\nIs tomorrow today: ${isToday(tomorrow)}`;
+    }
+  },
+  {
+    id: 178,
+    title: "Array Sum of Object Properties",
+    category: "arrays",
+    description: "Sum a specific numeric property across all objects in an array.",
+    code: `const items = [{ price: 10 }, { price: 20 }, { price: 30 }];
+const total = items.reduce((sum, item) => sum + item.price, 0); // 60`,
+    demo: () => {
+      const items = [{ name: 'A', price: 10 }, { name: 'B', price: 20.5 }, { name: 'C', price: 30 }];
+      const total = items.reduce((sum, item) => sum + item.price, 0);
+      return `Items: ${JSON.stringify(items)}\nTotal Price: ${total}`;
+    }
+  },
+  {
+    id: 179,
+    title: "Get Max Value from Array of Objects",
+    category: "arrays",
+    description: "Find the maximum value of a specific numeric property from objects in an array.",
+    code: `const items = [{ value: 10 }, { value: 50 }, { value: 20 }];
+const max = Math.max(...items.map(item => item.value)); // 50`,
+    demo: () => {
+      const items = [{ name: 'A', score: 10 }, { name: 'B', score: 95 }, { name: 'C', score: 70 }];
+      const maxScore = Math.max(...items.map(item => item.score));
+      return `Items: ${JSON.stringify(items)}\nMaximum Score: ${maxScore}`;
+    }
+  },
+  {
+    id: 180,
+    title: "Get Min Value from Array of Objects",
+    category: "arrays",
+    description: "Find the minimum value of a specific numeric property from objects in an array.",
+    code: `const items = [{ value: 10 }, { value: 50 }, { value: 20 }];
+const min = Math.min(...items.map(item => item.value)); // 10`,
+    demo: () => {
+      const items = [{ name: 'A', score: 10 }, { name: 'B', score: 95 }, { name: 'C', score: 70 }];
+      const minScore = Math.min(...items.map(item => item.score));
+      return `Items: ${JSON.stringify(items)}\nMinimum Score: ${minScore}`;
+    }
+  },
+  {
+    id: 181,
+    title: "Check if String Starts With",
+    category: "strings",
+    description: "Check if a string begins with a specified substring.",
+    code: `const str = 'Hello World';
+const startsWithHello = str.startsWith('Hello'); // true
+const startsWithworld = str.startsWith('world'); // false`,
+    demo: () => {
+      const str = 'Hello World';
+      const startsWithHello = str.startsWith('Hello');
+      const startsWithWorld = str.startsWith('World');
+      return `"${str}" starts with "Hello": ${startsWithHello}\n"${str}" starts with "World": ${startsWithWorld}`;
+    }
+  },
+  {
+    id: 182,
+    title: "Check if String Ends With",
+    category: "strings",
+    description: "Check if a string ends with a specified substring.",
+    code: `const str = 'Hello World';
+const endsWithWorld = str.endsWith('World'); // true
+const endsWithHello = str.endsWith('Hello'); // false`,
+    demo: () => {
+      const str = 'Hello World';
+      const endsWithWorld = str.endsWith('World');
+      const endsWithHello = str.endsWith('Hello');
+      return `"${str}" ends with "World": ${endsWithWorld}\n"${str}" ends with "Hello": ${endsWithHello}`;
+    }
+  },
+  {
+    id: 183,
+    title: "Parse Integer from String",
+    category: "utilities",
+    description: "Convert a string to an integer, handling non-numeric prefixes.",
+    code: `const numStr1 = '123px';
+const numStr2 = 'abc123';
+const int1 = parseInt(numStr1); // 123
+const int2 = parseInt(numStr2); // NaN`,
+    demo: () => {
+      const numStr1 = '123px';
+      const numStr2 = 'abc123';
+      const int1 = parseInt(numStr1);
+      const int2 = parseInt(numStr2);
+      return `parseInt('123px'): ${int1}\nparseInt('abc123'): ${int2}`;
+    }
+  },
+  {
+    id: 184,
+    title: "Generate Array of Zeros",
+    category: "arrays",
+    description: "Create an array filled with a specific number of zeros.",
+    code: `const zeros = Array(5).fill(0); // [0, 0, 0, 0, 0]`,
+    demo: () => {
+      const zeros = Array(5).fill(0);
+      return `Array of 5 zeros: [${zeros}]`;
+    }
+  },
+  {
+    id: 185,
+    title: "Check if number is finite",
+    category: "utilities",
+    description: "Determine if a value is a finite number (not Infinity, -Infinity, or NaN).",
+    code: `const num1 = 10;
+const num2 = Infinity;
+const num3 = NaN;
+const isFinite1 = Number.isFinite(num1); // true
+const isFinite2 = Number.isFinite(num2); // false`,
+    demo: () => {
+      const num1 = 10;
+      const num2 = Infinity;
+      const num3 = NaN;
+      return `10 is finite: ${Number.isFinite(num1)}\nInfinity is finite: ${Number.isFinite(num2)}\nNaN is finite: ${Number.isFinite(num3)}`;
+    }
+  },
+  {
+    id: 186,
+    title: "Check if Integer",
+    category: "utilities",
+    description: "Determine if a value is an integer.",
+    code: `const num1 = 10;
+const num2 = 10.5;
+const isInt1 = Number.isInteger(num1); // true
+const isInt2 = Number.isInteger(num2); // false`,
+    demo: () => {
+      const num1 = 10;
+      const num2 = 10.5;
+      const num3 = NaN;
+      return `10 is integer: ${Number.isInteger(num1)}\n10.5 is integer: ${Number.isInteger(num2)}\nNaN is integer: ${Number.isInteger(num3)}`;
+    }
+  },
+  {
+    id: 187,
+    title: "Get URL Hostname",
+    category: "utilities",
+    description: "Extract the hostname (domain name) from a URL.",
+    code: `const url = new URL('https://www.example.com/path');
+const hostname = url.hostname; // "www.example.com"`,
+    demo: () => {
+      const url = new URL('https://www.example.com/path?query=1');
+      const hostname = url.hostname;
+      return `URL: ${url.href}\nHostname: ${hostname}`;
+    }
+  },
+  {
+    id: 188,
+    title: "Check Browser Language",
+    category: "utilities",
+    description: "Get the user's preferred language settings from their browser.",
+    code: `const browserLanguage = navigator.language; // E.g., "en-US"
+const languages = navigator.languages; // E.g., ["en-US", "en", "es"]`,
+    demo: () => {
+      const browserLanguage = navigator.language;
+      const languages = navigator.languages;
+      return `Browser Language: ${browserLanguage}\nAll Languages: [${languages.join(', ')}]`;
+    }
+  },
+  {
+    id: 189,
+    title: "Check if Element is Child of Another",
+    category: "dom",
+    description: "Determine if a DOM element is a child of another element.",
+    code: `const parent = document.getElementById('parentElement');
+const child = document.getElementById('childElement');
+const isChild = parent.contains(child);`,
+    demo: () => {
+      return "Checks if one DOM element contains another. (Requires actual DOM elements to test)";
+    }
+  },
+  {
+    id: 190,
+    title: "Copy Object Properties to Another",
+    category: "objects",
+    description: "Copy properties from one object to another (shallow copy).",
+    code: `const source = { a: 1, b: 2 };
+const target = { c: 3 };
+Object.assign(target, source); // target is now { c: 3, a: 1, b: 2 }`,
+    demo: () => {
+      const source = { a: 1, b: 2 };
+      const target = { c: 3 };
+      Object.assign(target, source);
+      return `Source: ${JSON.stringify(source)}\nTarget after assign: ${JSON.stringify(target)}`;
+    }
+  },
+  {
+    id: 191,
+    title: "Iterate Object Values",
+    category: "objects",
+    description: "Loop through only the values of an object.",
+    code: `const obj = { a: 1, b: 'hello', c: true };
+for (const value of Object.values(obj)) {
+  console.log(value);
+}
+Object.values(obj).forEach(value => console.log(value));`,
+    demo: () => {
+      const obj = { a: 1, b: 'hello', c: true };
+      let output = 'Values:\n';
+      Object.values(obj).forEach(value => output += `${value}\n`);
+      return output.trim();
+    }
+  },
+  {
+    id: 192,
+    title: "Iterate Object Keys",
+    category: "objects",
+    description: "Loop through only the keys (property names) of an object.",
+    code: `const obj = { a: 1, b: 'hello', c: true };
+for (const key of Object.keys(obj)) {
+  console.log(key);
+}
+Object.keys(obj).forEach(key => console.log(key));`,
+    demo: () => {
+      const obj = { a: 1, b: 'hello', c: true };
+      let output = 'Keys:\n';
+      Object.keys(obj).forEach(key => output += `${key}\n`);
+      return output.trim();
+    }
+  },
+  {
+    id: 193,
+    title: "Check if Property is Enumerable",
+    category: "objects",
+    description: "Determine if a property is enumerable (visible in for...in loops and Object.keys()).",
+    code: `const obj = { a: 1, b: 2 };
+Object.defineProperty(obj, 'c', { value: 3, enumerable: false });
+const isEnumerable1 = obj.propertyIsEnumerable('a'); // true
+const isEnumerable2 = obj.propertyIsEnumerable('c'); // false`,
+    demo: () => {
+      const obj = { a: 1, b: 2 };
+      Object.defineProperty(obj, 'c', { value: 3, enumerable: false });
+      const isEnumerable1 = obj.propertyIsEnumerable('a');
+      const isEnumerable2 = obj.propertyIsEnumerable('c');
+      return `Property 'a' is enumerable: ${isEnumerable1}\nProperty 'c' is enumerable: ${isEnumerable2}`;
+    }
+  },
+  {
+    id: 194,
+    title: "Measure Text Width (Canvas)",
+    category: "dom",
+    description: "Calculate the pixel width of a given text string using a canvas context.",
+    code: `function getTextWidth(text, font) {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  context.font = font || getComputedStyle(document.body).font;
+  return context.measureText(text).width;
+}
+const width = getTextWidth('Hello World', '16px Arial');`,
+    demo: () => {
+      function getTextWidth(text, font) {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        context.font = font || '16px Arial'; // Fallback font
+        return context.measureText(text).width;
+      }
+      const text = 'Hello World!';
+      const font = '20px sans-serif';
+      const width = getTextWidth(text, font);
+      return `Text: "${text}" with font "${font}"\nWidth: ${width.toFixed(2)}px`;
+    }
+  },
+  {
+    id: 195,
+    title: "Check if element has focus",
+    category: "dom",
+    description: "Determine if a specific DOM element currently has keyboard focus.",
+    code: `const input = document.getElementById('myInput');
+const hasFocus = (document.activeElement === input);`,
+    demo: () => {
+      // Create a dummy input for demonstration
+      const dummyInput = document.createElement('input');
+      dummyInput.id = 'dummyFocusInput';
+      document.body.appendChild(dummyInput);
+
+      dummyInput.focus(); // Simulate focusing the input
+      const hasFocusAfterFocus = (document.activeElement === dummyInput);
+
+      dummyInput.blur(); // Simulate blurring the input
+      const hasFocusAfterBlur = (document.activeElement === dummyInput);
+
+      document.body.removeChild(dummyInput); // Clean up
+      return `After focusing: ${hasFocusAfterFocus}\nAfter blurring: ${hasFocusAfterBlur}`;
+    }
+  },
+  {
+    id: 196,
+    title: "Execute Code after Page Load",
+    category: "dom",
+    description: "Run code after the entire page (including images and stylesheets) has fully loaded.",
+    code: `window.addEventListener('load', (event) => {
+  console.log('Page fully loaded');
+  // Your code here
+});`,
+    demo: () => {
+      return "This code runs after the entire page (including assets) is loaded. Check browser console.";
+    }
+  },
+  {
+    id: 197,
+    title: "Encode to Base64",
+    category: "utilities",
+    description: "Encode a string into its Base64 representation.",
+    code: `const originalString = 'Hello World!';
+const encodedString = btoa(originalString); // SGVsbG8gV29ybGQh`,
+    demo: () => {
+      const originalString = 'Hello World!';
+      const encodedString = btoa(originalString);
+      return `Original: "${originalString}"\nBase64 Encoded: "${encodedString}"`;
+    }
+  },
+  {
+    id: 198,
+    title: "Decode from Base64",
+    category: "utilities",
+    description: "Decode a Base64 string back to its original form.",
+    code: `const encodedString = 'SGVsbG8gV29ybGQh';
+const decodedString = atob(encodedString); // Hello World!`,
+    demo: () => {
+      const encodedString = 'SGVsbG8gV29ybGQh';
+      const decodedString = atob(encodedString);
+      return `Encoded: "${encodedString}"\nBase64 Decoded: "${decodedString}"`;
+    }
+  },
+  {
+    id: 199,
+    title: "Get Average of Array",
+    category: "arrays",
+    description: "Calculate the average value of numbers in an array.",
+    code: `const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, val) => acc + val, 0);
+const average = sum / numbers.length; // 3`,
+    demo: () => {
+      const numbers = [10, 20, 30, 40, 50];
+      const sum = numbers.reduce((acc, val) => acc + val, 0);
+      const average = sum / numbers.length;
+      return `Array: [${numbers}]\nAverage: ${average}`;
+    }
+  },
+  {
+    id: 200,
+    title: "Group Array by Multiple Properties",
+    category: "arrays",
+    description: "Group elements of an array of objects based on multiple properties.",
+    code: `const products = [
+  { type: 'A', color: 'red', name: 'P1' },
+  { type: 'B', color: 'blue', name: 'P2' },
+  { type: 'A', color: 'blue', name: 'P3' },
+  { type: 'A', color: 'red', name: 'P4' }
+];
+const grouped = products.reduce((acc, item) => {
+  const key = \`\${item.type}-\${item.color}\`;
+  (acc[key] = acc[key] || []).push(item);
+  return acc;
+}, {});`,
+    demo: () => {
+      const products = [
+        { type: 'A', color: 'red', name: 'P1' },
+        { type: 'B', color: 'blue', name: 'P2' },
+        { type: 'A', color: 'blue', name: 'P3' },
+        { type: 'A', color: 'red', name: 'P4' }
+      ];
+      const grouped = products.reduce((acc, item) => {
+        const key = `${item.type}-${item.color}`;
+        (acc[key] = acc[key] || []).push(item);
+        return acc;
+      }, {});
+      return `Original: ${JSON.stringify(products, null, 2)}\nGrouped: ${JSON.stringify(grouped, null, 2)}`;
+    }
+  },
+
+  {
+    id: 201,
+    title: "Vibrate Device",
+    category: "browser apis",
+    description: "Make the device vibrate using the Vibration API.",
+    code: `if ('vibrate' in navigator) {
+  navigator.vibrate(200); // Vibrate for 200ms
+  // navigator.vibrate([100, 30, 100, 30, 100]); // Pattern
+} else {
+  console.log('Vibration API not supported.');
+}`,
+    demo: () => {
+      if ('vibrate' in navigator) {
+        navigator.vibrate(200);
+        return 'Device vibrated for 200ms (if supported).';
+      } else {
+        return 'Vibration API not supported by your browser.';
+      }
+    }
+  },
+  {
+    id: 202,
+    title: "Request Fullscreen",
+    category: "browser apis",
+    description: "Make an element or the entire page go fullscreen.",
+    code: `const element = document.documentElement; // Or a specific element
+if (element.requestFullscreen) {
+  element.requestFullscreen();
+} else if (element.mozRequestFullScreen) { /* Firefox */
+  element.mozRequestFullScreen();
+} else if (element.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+  element.webkitRequestFullscreen();
+} else if (element.msRequestFullscreen) { /* IE/Edge */
+  element.msRequestFullscreen();
+}`,
+    demo: () => {
+      return "Clicking the demo button will attempt to make the page fullscreen. (Requires user gesture to work)";
+    }
+  },
+  {
+    id: 203,
+    title: "Exit Fullscreen",
+    category: "browser apis",
+    description: "Exit fullscreen mode for the document.",
+    code: `if (document.exitFullscreen) {
+  document.exitFullscreen();
+} else if (document.mozCancelFullScreen) { /* Firefox */
+  document.mozCancelFullScreen();
+} else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+  document.webkitExitFullscreen();
+} else if (document.msExitFullscreen) { /* IE/Edge */
+  document.msExitFullscreen();
+}`,
+    demo: () => {
+      return "Clicking the demo button will attempt to exit fullscreen mode. (Only works if currently in fullscreen)";
+    }
+  },
+  {
+    id: 204,
+    title: "Send Desktop Notification",
+    category: "browser apis",
+    description: "Display a desktop notification to the user (requires permission).",
+    code: `if ('Notification' in window) {
+  Notification.requestPermission().then(permission => {
+    if (permission === 'granted') {
+      new Notification('Hello!', { body: 'This is a test notification.' });
+    } else {
+      console.log('Notification permission denied.');
+    }
+  });
+} else {
+  console.log('Notifications not supported.');
+}`,
+    demo: () => {
+      if ('Notification' in window) {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            new Notification('JS Tricks', { body: 'This is your trick notification!' });
+            return 'Notification sent (if permission granted).';
+          } else {
+            return 'Notification permission denied or blocked.';
+          }
+        });
+        return 'Requesting notification permission...';
+      } else {
+        return 'Notifications not supported by your browser.';
+      }
+    }
+  },
+  {
+    id: 205,
+    title: "Get Geolocation",
+    category: "browser apis",
+    description: "Retrieve the user's current geographical position (requires permission).",
+    code: `if ('geolocation' in navigator) {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      console.log('Latitude:', position.coords.latitude);
+      console.log('Longitude:', position.coords.longitude);
+    },
+    (error) => {
+      console.error('Geolocation error:', error.message);
+    }
+  );
+} else {
+  console.log('Geolocation not supported.');
+}`,
+    demo: () => {
+      if ('geolocation' in navigator) {
+        return 'Check console for geolocation data (requires permission).';
+      } else {
+        return 'Geolocation not supported by your browser.';
+      }
+    }
+  },
+  {
+    id: 206,
+    title: "Battery Status API",
+    category: "browser apis",
+    description: "Get information about the device's battery charging status and level.",
+    code: `if ('getBattery' in navigator) {
+  navigator.getBattery().then(battery => {
+    console.log('Battery charging:', battery.charging);
+    console.log('Battery level:', battery.level * 100 + '%');
+    battery.addEventListener('chargingchange', () => {
+      console.log('Battery charging changed:', battery.charging);
+    });
+  });
+} else {
+  console.log('Battery Status API not supported.');
+}`,
+    demo: () => {
+      if ('getBattery' in navigator) {
+        return 'Check console for battery status (if supported).';
+      } else {
+        return 'Battery Status API not supported by your browser.';
+      }
+    }
+  },
+  {
+    id: 207,
+    title: "Page Visibility API",
+    category: "browser apis",
+    description: "Detect when the page becomes visible or hidden.",
+    code: `document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    console.log('Page is hidden');
+  } else {
+    console.log('Page is visible');
+  }
+});`,
+    demo: () => {
+      return "Minimize/switch tabs to see console messages about page visibility.";
+    }
+  },
+  {
+    id: 208,
+    title: "Web Share API",
+    category: "browser apis",
+    description: "Share text, URLs, or files from the browser to other apps (requires HTTPS).",
+    code: `if (navigator.share) {
+  navigator.share({
+    title: 'JavaScript Tricks',
+    text: 'Check out these awesome JS tricks!',
+    url: window.location.href,
+  })
+  .then(() => console.log('Successfully shared'))
+  .catch((error) => console.error('Error sharing:', error));
+} else {
+  console.log('Web Share API not supported or not on HTTPS.');
+}`,
+    demo: () => {
+      if (navigator.share) {
+        return "Clicking this will open the native share dialog (requires HTTPS).";
+      } else {
+        return 'Web Share API not supported by your browser or not on HTTPS.';
+      }
+    }
+  },
+  {
+    id: 209,
+    title: "Broadcast Channel API",
+    category: "browser apis",
+    description: "Communicate between different Browse contexts (tabs, windows, iframes) from the same origin.",
+    code: `const channel = new BroadcastChannel('my_channel');
+channel.postMessage('Hello from this tab!');
+channel.onmessage = (event) => {
+  console.log('Received message:', event.data);
+};`,
+    demo: () => {
+      const channel = new BroadcastChannel('my_channel');
+      channel.postMessage('Hello from demo!');
+      channel.onmessage = (event) => {
+        return `Received message from another tab: ${event.data}`;
+      };
+      return "Open another tab with this page and click its demo for 'Broadcast Channel' to see messages.";
+    }
+  },
+  {
+    id: 210,
+    title: "User-Agent String Check",
+    category: "browser apis",
+    description: "Access the browser's user-agent string for basic browser/device detection.",
+    code: `const userAgent = navigator.userAgent;
+console.log('User Agent:', userAgent);`,
+    demo: () => {
+      return `User Agent: ${navigator.userAgent}`;
+    }
+  },
+  {
+    id: 211,
+    title: "Check for Pointer Events Support",
+    category: "browser apis",
+    description: "Determine if the browser supports Pointer Events (unifying mouse, touch, pen).",
+    code: `const supportsPointerEvents = window.PointerEvent !== undefined;`,
+    demo: () => {
+      const supportsPointerEvents = window.PointerEvent !== undefined;
+      return `Supports Pointer Events: ${supportsPointerEvents}`;
+    }
+  },
+  {
+    id: 212,
+    title: "Request Idle Callback",
+    category: "browser apis",
+    description: "Schedule a low-priority function to run during a browser's idle periods.",
+    code: `if ('requestIdleCallback' in window) {
+  requestIdleCallback(() => {
+    console.log('Idle callback executed!');
+  });
+} else {
+  console.log('requestIdleCallback not supported.');
+}`,
+    demo: () => {
+      if ('requestIdleCallback' in window) {
+        return 'Open console. "Idle callback executed!" will appear when browser is idle.';
+      } else {
+        return 'requestIdleCallback not supported by your browser.';
+      }
+    }
+  },
+  // Adding more tricks for existing categories
+  {
+    id: 213,
+    title: "Array Contains All Elements",
+    category: "arrays",
+    description: "Check if one array contains all elements of another array.",
+    code: `const mainArr = [1, 2, 3, 4, 5];
+const subArr = [2, 4];
+const containsAll = subArr.every(val => mainArr.includes(val)); // true`,
+    demo: () => {
+      const mainArr = [1, 2, 3, 4, 5];
+      const subArr1 = [2, 4];
+      const subArr2 = [2, 6];
+      const containsAll1 = subArr1.every(val => mainArr.includes(val));
+      const containsAll2 = subArr2.every(val => mainArr.includes(val));
+      return `Main: [${mainArr}]\nSub1: [${subArr1}] -> Contains all: ${containsAll1}\nSub2: [${subArr2}] -> Contains all: ${containsAll2}`;
+    }
+  },
+  {
+    id: 214,
+    title: "CamelCase to Human Readable",
+    category: "strings",
+    description: "Convert a camelCase string to a human-readable format with spaces.",
+    code: `const camelCaseStr = 'camelCaseStringExample';
+const readable = camelCaseStr.replace(/([A-Z])/g, ' $1').toLowerCase(); // "camel case string example"`,
+    demo: () => {
+      const camelCaseStr = 'camelCaseStringExample';
+      const readable = camelCaseStr.replace(/([A-Z])/g, ' $1').toLowerCase();
+      return `Original: "${camelCaseStr}"\nReadable: "${readable}"`;
+    }
+  },
+  {
+    id: 215,
+    title: "Randomize Array Order (Fisher-Yates)",
+    category: "arrays",
+    description: "Another implementation of the Fisher-Yates shuffle algorithm.",
+    code: `function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+const numbers = [1, 2, 3, 4, 5];
+shuffleArray(numbers);`,
+    demo: () => {
+      function shuffleArray(array) {
+        const newArr = [...array]; // Create a copy to not modify original for demo
+        for (let i = newArr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+        }
+        return newArr;
+      }
+      const numbers = [1, 2, 3, 4, 5];
+      const shuffled = shuffleArray(numbers);
+      return `Original: [${numbers}]\nShuffled: [${shuffled}]`;
+    }
+  },
+  {
+    id: 216,
+    title: "Count Vowels in String",
+    category: "regex",
+    description: "Count the number of vowels (a, e, i, o, u) in a string.",
+    code: `const text = 'Hello World';
+const vowelCount = (text.match(/[aeiou]/gi) || []).length;`,
+    demo: () => {
+      const text = 'Hello World JavaScript';
+      const vowelCount = (text.match(/[aeiou]/gi) || []).length;
+      return `Text: "${text}"\nVowel Count: ${vowelCount}`;
+    }
+  },
+  {
+    id: 217,
+    title: "Remove Trailing Slashes from URL",
+    category: "strings",
+    description: "Remove trailing slashes from the end of a URL string.",
+    code: `const url = 'https://example.com/path///';
+const cleanedUrl = url.replace(/\\/+\\s*$/, ''); // "https://example.com/path"`,
+    demo: () => {
+      const url = 'https://example.com/path///';
+      const cleanedUrl = url.replace(/\/+\s*$/, '');
+      const url2 = 'https://example.com/path';
+      const cleanedUrl2 = url2.replace(/\/+\s*$/, '');
+      return `Original 1: "${url}"\nCleaned 1: "${cleanedUrl}"\nOriginal 2: "${url2}"\nCleaned 2: "${cleanedUrl2}"`;
+    }
+  },
+  {
+    id: 218,
+    title: "Convert to Boolean (Explicit)",
+    category: "utilities",
+    description: "Explicitly convert a value to its boolean equivalent using `!!`.",
+    code: `const value1 = 0;
+const value2 = 'hello';
+const bool1 = !!value1; // false
+const bool2 = !!value2; // true`,
+    demo: () => {
+      const value1 = 0;
+      const value2 = 'hello';
+      const value3 = null;
+      const value4 = {};
+      return `0 -> ${!!value1}\n'hello' -> ${!!value2}\nnull -> ${!!value3}\n{} -> ${!!value4}`;
+    }
+  },
+  {
+    id: 219,
+    title: "Get Days in Month",
+    category: "date",
+    description: "Calculate the number of days in a specific month of a given year.",
+    code: `function daysInMonth(year, month) { // month is 0-indexed (Jan is 0)
+  return new Date(year, month + 1, 0).getDate();
+}
+const days = daysInMonth(2024, 1); // February 2024 (leap year)`,
+    demo: () => {
+      function daysInMonth(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+      }
+      const daysFeb2024 = daysInMonth(2024, 1); // Feb 2024
+      const daysFeb2023 = daysInMonth(2023, 1); // Feb 2023
+      return `Days in Feb 2024: ${daysFeb2024}\nDays in Feb 2023: ${daysFeb2023}`;
+    }
+  },
+  {
+    id: 220,
+    title: "Clone Date Object",
+    category: "date",
+    description: "Create a new Date object that is a clone of an existing one.",
+    code: `const originalDate = new Date();
+const clonedDate = new Date(originalDate.getTime()); // Or new Date(originalDate)`,
+    demo: () => {
+      const originalDate = new Date();
+      const clonedDate = new Date(originalDate.getTime());
+      clonedDate.setDate(clonedDate.getDate() + 1); // Modify clone
+      return `Original: ${originalDate.toDateString()}\nCloned (modified): ${clonedDate.toDateString()}\n(Original remains unchanged)`;
+    }
+  },
 
         ];
 
